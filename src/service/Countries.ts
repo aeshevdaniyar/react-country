@@ -24,13 +24,21 @@ class Countries {
   async getCountriesByRegion(region: string) {
     const { data } = await this.api.get(`region/${region}`);
 
-    console.log(data);
+    return data;
   }
 
   async getCountriesByName(query: string) {
     const { data } = await this.api.get(`name/${query}`);
 
-    console.log(data);
+    return data;
+  }
+
+  async getCountryByCode(code: string | undefined) {
+    if (code) {
+      const { data } = await this.api.get(`alpha/${code}`);
+
+      return data;
+    }
   }
 }
 
